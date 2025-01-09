@@ -1,15 +1,16 @@
-import * as React from 'react';
+import "./Ingredient.css";
 
 interface Props {
   name: string;
   image: string;
-  onAddIngredient: React.MouseEventHandler;
   count: number;
+  onAddIngredient: React.MouseEventHandler;
+  onDeleteIngredient: React.MouseEventHandler;
 }
 
-const Ingredient: React.FC<Props> = ({image, name, onAddIngredient, count}) => {
+const Ingredient: React.FC<Props> = ({image, name, onAddIngredient, count, onDeleteIngredient}) => {
   return (
-    <>
+    <div className="ingredient">
       <button type="button"
               className="ingredientBtn"
               onClick={onAddIngredient}>
@@ -19,7 +20,8 @@ const Ingredient: React.FC<Props> = ({image, name, onAddIngredient, count}) => {
       </button>
       <p>x <span>{count}</span>
       </p>
-    </>
+      <button type="button" onClick={onDeleteIngredient}>X</button>
+    </div>
   );
 };
 
