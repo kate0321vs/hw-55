@@ -20,17 +20,17 @@ interface ICount {
 
 const App = () => {
   const ingredients: IIngredient[] = [
-    {name: 'Meat', price: 80, image: meatImage},
-    {name: 'Cheese', price: 50, image: cheeseImage},
     {name: 'Salad', price: 10, image: saladImage},
+    {name: 'Cheese', price: 50, image: cheeseImage},
     {name: 'Bacon', price: 60, image: baconImage},
+    {name: 'Meat', price: 80, image: meatImage},
   ];
 
   const [countIngredients, setCountIngredient] = useState<ICount[]>([
-    {name: 'Meat', count: 0},
-    {name: 'Cheese', count: 0},
     {name: 'Salad', count: 0},
-    {name: 'Bacon', count: 0}
+    {name: 'Cheese', count: 0},
+    {name: 'Bacon', count: 0},
+    {name: 'Meat', count: 0},
   ]);
 
   const addIngredient = (ingredient: IIngredient) => {
@@ -53,11 +53,20 @@ const App = () => {
     setCountIngredient(newCount);
   }
 
-
     const price = countIngredients.reduce((acc, countIngredient, index) => {
       acc = acc + (countIngredient.count * ingredients[index].price);
       return acc;
     }, 30)
+
+  const burgerIngredients: React.ReactNode[] = [];
+
+  countIngredients.forEach((ingredient) => {
+    for (let i = 0; i < ingredient.count; i++) {
+      burgerIngredients.push(
+        <div className={ingredient.name}></div>
+      );
+    }
+  });
 
   return (
     <div className="mainContainer">
@@ -83,9 +92,7 @@ const App = () => {
             <div className="Seeds1"></div>
             <div className="Seeds2"></div>
           </div>
-          <div className="Salad"></div>
-          <div className="Cheese"></div>
-          <div className="Meat"></div>
+            {burgerIngredients}
           <div className="BreadBottom"></div>
         </div>
         <Price totalPrice={price}/>
