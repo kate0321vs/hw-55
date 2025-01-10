@@ -6,14 +6,15 @@ import baconImage from './assets/bacon.png';
 import Ingredient from './components/Ingredient/Ingredient.tsx';
 import { useState } from 'react';
 import Price from './components/Price/Price.tsx';
+import DrawIngredient from './components/DrawIngredient/DrawIngredient.tsx';
 
-interface IIngredient {
+export interface IIngredient {
   name: string;
   price: number,
   image: string;
 }
 
-interface ICount {
+export interface ICount {
   name: string;
   count: number;
 }
@@ -93,8 +94,8 @@ const App = () => {
             <div className="Seeds1"></div>
             <div className="Seeds2"></div>
           </div>
-          {burgerIngredients.map((ingredient) => (
-            <div className={ingredient.name}></div>
+          {burgerIngredients.map((ingredient, index) => (
+            <DrawIngredient ingredientName={ingredient.name} key={index} />
           ))}
           <div className="BreadBottom"></div>
         </div>
