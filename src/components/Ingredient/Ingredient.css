@@ -14,10 +14,19 @@
   align-items: center;
   gap: 1em;
   width: 180px;
+  background: transparent;
+  border: 3px solid white;
 }
 
 .ingredientImage {
   width: 60px;
   height: 60px;
-  border-radius: 50%;
+  border-radius: 10px;
+}
+
+.deleteBtn {
+  width: 40px;
+  height: 40px;
+  background: url("src/assets/delete-icon.png") no-repeat center;
+  background-size: contain;
 }

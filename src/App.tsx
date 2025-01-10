@@ -58,12 +58,13 @@ const App = () => {
       return acc;
     }, 30)
 
-  const burgerIngredients: React.ReactNode[] = [];
+  const burgerIngredients: ICount[]  = [];
 
-  countIngredients.forEach((ingredient) => {
+  countIngredients.map((ingredient) => {
     for (let i = 0; i < ingredient.count; i++) {
       burgerIngredients.push(
-        <div className={ingredient.name}></div>
+        {name: ingredient.name,
+        count: ingredient.count},
       );
     }
   });
@@ -92,7 +93,9 @@ const App = () => {
             <div className="Seeds1"></div>
             <div className="Seeds2"></div>
           </div>
-            {burgerIngredients}
+          {burgerIngredients.map((ingredient) => (
+            <div className={ingredient.name}></div>
+          ))}
           <div className="BreadBottom"></div>
         </div>
         <Price totalPrice={price}/>

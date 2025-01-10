@@ -20,7 +20,7 @@ const Ingredient: React.FC<Props> = ({image, name, onAddIngredient, count, onDel
       </button>
       <p>x <span>{count}</span>
       </p>
-      <button type="button" onClick={onDeleteIngredient}>X</button>
+      <button className="deleteBtn" type="button" onClick={onDeleteIngredient}></button>
     </div>
   );
 };
